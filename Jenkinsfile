@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         REGISTRY = "k8s-vga-worker1:5000"
-        IMAGE_NAME = "group1-team6-cha6"
-        IMAGE_TAG = "v1.6"
+        IMAGE_NAME = "group1-team6-cha-card"
+        IMAGE_TAG = "v0.1"
         NAMESPACE = "group1-team6"
         JAVA_HOME = "/tmp/jdk-21.0.5"
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
