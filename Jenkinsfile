@@ -43,6 +43,9 @@ pipeline {
                     // Kubernetes Deployment and Service 생성 및 적용 (1일차 교육때 사용한 deploy & service 생성 yaml 파일 등록하여 사용)
                     // sh "kubectl apply -f ./yaml/demo-app.yaml -n ${NAMESPACE}"
                     sh "kubectl apply -f yaml/cha-app.yaml -n ${NAMESPACE}"
+                    // sh "kubectl rollout restart deployment/<deployment-name>"
+                    // image tag 변경 없이 적용하려면 pod 재시작
+                    sh "kubectl rollout restart deployment/account-cha"
                 }
             }
         }
