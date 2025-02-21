@@ -54,7 +54,7 @@ public class AccountsController {
             )
     }
     )
-    @PostMapping("/create1")
+    @PostMapping("/create2")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
         iAccountsService.createAccount(customerDto);
         return ResponseEntity
