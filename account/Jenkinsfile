@@ -13,7 +13,7 @@ pipeline {
             steps {
                 // Git 저장소에서 소스 코드 체크아웃 (branch 지정 : 본인 repository의 branch 이름으로 설정)
                 // git branch: 'main', url: 'https://github.com/chayeonhee/eureka.git'
-                git url: 'https://github.com/chayeonhee/eureka.git', credentialsId: 'your-credentials-id', branch: 'main', submoduleCfg: [], extensions: [[$class: 'SubmoduleOption', recursiveSubmodules: true]]
+                git url: 'https://github.com/chayeonhee/eureka.git',  branch: 'main', submoduleCfg: [], extensions: [[$class: 'SubmoduleOption', recursiveSubmodules: true]]
             }
         }
         stage('Build with Maven') {
