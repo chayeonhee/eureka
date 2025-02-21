@@ -54,7 +54,7 @@ public class AccountsController {
             )
     }
     )
-    @PostMapping("/create")
+    @PostMapping("/creates")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
         iAccountsService.createAccount(customerDto);
         return ResponseEntity
@@ -161,7 +161,7 @@ public class AccountsController {
                     .body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
         }
     }
-    @GetMapping("/pod-name")
+    @GetMapping("/pod")
     public String getMethodName() {
         String podName = System.getenv("HOSTNAME");
         return "Pod Name: " + (podName != null ? podName : "unknown");
