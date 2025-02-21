@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: account-cha
+  name: account-dep-cha
   namespace: group1-team6
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: account-cha
+      app: account-pod-cha #pod selectr
   template:
     metadata:
       labels:
-        app: account-cha
+        app: account-pod-cha #pod label
     spec:
       containers:
-      - name: account-cha
+      - name: account-contaion-cha
         image: k8s-vga-worker1:5000/group1-team6-cha-acc:latest
         imagePullPolicy: Always
         # imagePullPolicy: IfNotPresent
@@ -28,7 +28,7 @@ metadata:
   namespace: group1-team6
 spec:
   selector:
-    app: account-cha
+    app: account-pod-cha
   ports:
     - protocol: TCP
       port: 8087 # kube unique inner port

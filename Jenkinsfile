@@ -45,7 +45,7 @@ pipeline {
                     sh "kubectl apply -f yaml/cha-app.yaml -n ${NAMESPACE}"
                     // sh "kubectl rollout restart deployment/<deployment-name>"
                     // image tag 변경 없이 적용하려면 pod 재시작
-                    sh "kubectl rollout restart deployment/account-cha -n ${NAMESPACE}"
+                    sh "kubectl rollout restart deployment/account-dep-cha -n ${NAMESPACE}"
                 }
             }
         }
@@ -53,7 +53,7 @@ pipeline {
             steps {
                 script {
                     // Kubenetes에서 특정 Deployment의 컨테이너 이미지를 업데이트 (아래 이름은 중복되지 않게 주의하여 지정, deployment, selector 이름으로)
-                    sh "kubectl set image deployment/account-cha account-cha=${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} --namespace=${NAMESPACE}"
+                    sh "kubectl set image deployment/account-dep-cha account-contain-cha=${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} --namespace=${NAMESPACE}"
                 }
             }
         }
