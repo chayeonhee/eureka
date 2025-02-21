@@ -14,7 +14,7 @@ spec:
         app: account-pod-cha #pod label
     spec:
       containers:
-      - name: account-contaion-cha
+      - name: account-contain-cha
         image: k8s-vga-worker1:5000/group1-team6-cha-acc:latest
         imagePullPolicy: Always
         # imagePullPolicy: IfNotPresent
