@@ -16,7 +16,8 @@ spec:
       containers:
       - name: account-cha
         image: k8s-vga-worker1:5000/group1-team6-cha-acc:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
+        # imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8087
 ---
