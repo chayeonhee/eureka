@@ -8,6 +8,9 @@ pipeline {
         JAVA_HOME = "/tmp/jdk-21.0.5"
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
+    dir('cards') {
+            echo "cd cards"
+        }
     stages {
         stage('Checkout') {
             steps {
@@ -22,9 +25,7 @@ pipeline {
                 }
             }
         }
-        dir('cards') {
-            echo "cd cards"
-        }
+        
         stage('Build with Maven') {
             steps {
                 script {
