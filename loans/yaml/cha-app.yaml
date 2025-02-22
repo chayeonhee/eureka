@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: loan-cha
-        image: k8s-vga-worker1:5000/group1-team6-cha-loan
+        image: k8s-vga-worker1:5000/group1-team6-cha-loan:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8087

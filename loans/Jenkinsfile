@@ -1,31 +1,42 @@
 pipeline {
     agent any
     environment {
-        REGISTRY = "k8s-vga-worker1:5000"
-        IMAGE_NAME = "group1-team6-cha-loan"
-        IMAGE_TAG = "latest"
-        NAMESPACE = "group1-team6"
-        JAVA_HOME = "/tmp/jdk-21.0.5"
+        REGISTRY = 'k8s-vga-worker1:5000'
+        IMAGE_NAME = 'group1-team6-cha-loan'
+        IMAGE_TAG = 'latest'
+        NAMESPACE = 'group1-team6'
+        JAVA_HOME = '/tmp/jdk-21.0.5'
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
     stages {
         stage('Checkout') {
             steps {
                 // Git 저장소에서 소스 코드 체크아웃 (branch 지정 : 본인 repository의 branch 이름으로 설정)
-                git branch: 'main', url: 'https://github.com/chayeonhee/loan.git'
+                // git branch: 'main', url: 'https://github.com/chayeonhee/loan.git'
+                script {
+                    // Git 레포지토리에서 cards 폴더만 체크아웃
+                    checkout([$class: 'GitSCM',
+                              branches: [[name: '*/main']],
+                              extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'loans/']]]],
+                              userRemoteConfigs: [[url: 'https://github.com/chayeonhee/eureka.git']]])
+                }
             }
         }
         stage('Build with Maven') {
             steps {
                 script {
-                    sh 'mvn clean package -DskipTests'
+                    dir('cards') {
+                        sh 'mvn clean package -DskipTests'
+                    }
                 }
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} ."
+                    dir('cards') {
+                        sh "docker build -t ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} ."
+                    }
                 }
             }
         }
@@ -40,11 +51,12 @@ pipeline {
         stage('Deploy and Service to Kubernetes') {
             steps {
                 script {
-                    // Kubernetes Deployment and Service 생성 및 적용 (1일차 교육때 사용한 deploy & service 생성 yaml 파일 등록하여 사용)
-                    // sh "kubectl apply -f ./yaml/demo-app.yaml -n ${NAMESPACE}"
-                    sh "kubectl apply -f yaml/cha-app.yaml -n ${NAMESPACE}"
-                     sh "kubectl rollout restart deployment/account-dep-cha -n ${NAMESPACE}"
-
+                    dir('loans') {
+                        // Kubernetes Deployment and Service 생성 및 적용 (1일차 교육때 사용한 deploy & service 생성 yaml 파일 등록하여 사용)
+                        // sh "kubectl apply -f ./yaml/demo-app.yaml -n ${NAMESPACE}"
+                        sh "kubectl apply -f ./yaml/cha-app.yaml -n ${NAMESPACE}"
+                        sh "kubectl rollout restart deployment/loan-cha -n ${NAMESPACE}"
+                    }
                 }
             }
         }
@@ -58,3 +70,4 @@ pipeline {
         }
     }
 }
+
