@@ -10,8 +10,8 @@ import com.eazybytes.cards.dto.LoansDto;
 
 import jakarta.validation.constraints.Pattern;
 
-// @FeignClient(value="eureka-client-loans", path="/api") // value는 bean으로 등록될 이름,path는 요청보낼endpoint
-@FeignClient(value="cha-loans-client", path="/api") // value는 bean으로 등록될 이름,path는 요청보낼endpoint
+// @FeignClient(value="eureka-client-loans", path="/api")
+@FeignClient(value="cha-loans-client", url="http://192.168.100.221:30607/api") // value는 bean으로 등록될 이름,path는 요청보낼endpoint
 public interface LoansDetailsClient {
 
 @GetMapping("/fetch")
