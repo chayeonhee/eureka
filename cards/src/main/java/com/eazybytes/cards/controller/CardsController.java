@@ -196,7 +196,7 @@ public ResponseEntity<LoansDto> fetchTotalLoan(@RequestParam
 @GetMapping("/podcard")
 public String getMethodName() {
     String podName = System.getenv("HOSTNAME");
-    return "Pod Name: " + (podName != null ? podName : "unknown");
+    return "Pod Name:" + (podName != null ? podName : "unknown");
 }
 
 }

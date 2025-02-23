@@ -164,7 +164,7 @@ public class AccountsController {
     @GetMapping("/podname")
     public String getMethodName() {
         String podName = System.getenv("HOSTNAME");
-        return "Pod Name: " + (podName != null ? podName : "unknown");
+        return "Pod Name : " + (podName != null ? podName : "unknown");
     }
 
 

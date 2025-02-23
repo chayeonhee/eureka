@@ -91,7 +91,7 @@ public class LoansController {
     }
 
     @Operation(
-            summary = "Update Loan Details REST API",
+            summary = "Update Loan Details REST API.",
             description = "REST API to update loan details based on a loan number"
     )
     @ApiResponses({
