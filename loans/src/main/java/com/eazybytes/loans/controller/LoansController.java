@@ -163,5 +163,10 @@ public class LoansController {
                     .body(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_DELETE));
         }
     }
+    @GetMapping("/podloan")
+public String getMethodName() {
+    String podName = System.getenv("HOSTNAME");
+    return "Pod Name:" + (podName != null ? podName : "unknown");
+}
 
 }
