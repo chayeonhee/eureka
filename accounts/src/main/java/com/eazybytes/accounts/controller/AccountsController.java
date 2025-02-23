@@ -161,7 +161,7 @@ public class AccountsController {
                     .body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
         }
     }
-    @GetMapping("/pod")
+    @GetMapping("/podname")
     public String getMethodName() {
         String podName = System.getenv("HOSTNAME");
         return "Pod Name: " + (podName != null ? podName : "unknown");
