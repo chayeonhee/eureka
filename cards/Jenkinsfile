@@ -59,7 +59,7 @@ pipeline {
                         sh "kubectl apply -f ./yaml/cha-app.yaml -n ${NAMESPACE}"
                         // sh "kubectl rollout restart deployment/<deployment-name>"
                         // image tag 변경 없이 적용하려면 pod 재시작
-                        // sh "kubectl rollout restart deployment/card-cha -n ${NAMESPACE}"
+                        sh "kubectl rollout restart deployment/card-cha -n ${NAMESPACE}"
                     }
                 }
             }
