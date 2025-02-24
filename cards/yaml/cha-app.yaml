@@ -16,7 +16,7 @@ spec:
       containers:
       - name: card-cha
         image: k8s-vga-worker1:5000/group1-team6-cha-card:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 8088
 ---
