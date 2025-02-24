@@ -161,6 +161,12 @@ public class AccountsController {
                     .body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
         }
     }
+    @Operation(summary = "Get Pod Name", description = "get pod name")
+    @ApiResponses({
+                    @ApiResponse(responseCode = "200", description = "HTTP Status OK"),
+                    @ApiResponse(responseCode = "417", description = "Expectation Failed"),
+                    @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error", content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
+    })
     @GetMapping("/podaccount")
     public String getMethodName() {
         String podName = System.getenv("HOSTNAME");
