@@ -1,0 +1,5 @@
+com\mobigen\demo2\controller\UserController.class
+com\mobigen\demo2\Demo2Application.class
+com\mobigen\demo2\entity\User.class
+com\mobigen\demo2\repository\UserRepository.class
+com\mobigen\demo2\controller\UserService.class
