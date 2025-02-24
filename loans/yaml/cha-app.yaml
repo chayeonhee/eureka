@@ -4,7 +4,7 @@ metadata:
   name: loan-cha
   namespace: group1-team6
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: loan-cha
